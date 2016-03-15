@@ -17,14 +17,32 @@ var server = http.createServer((req, res) => {
 				fs.readFile(dir + '4.jpg', function (err, data4) {
 					fs.readFile(dir + '5.jpg', function (err, data5) {
 						fs.readFile(dir + '6.jpg', function (err, data6) {
-							var body = JSON.stringify({
-								data1: toBase64(data1),
-								data2: toBase64(data2),
-								data3: toBase64(data3),
-								data4: toBase64(data4),
-								data5: toBase64(data5),
-								data6: toBase64(data6)
-							});
+							var body = JSON.stringify([
+								{
+									filename: '1.jpg',
+									data: toBase64(data1)
+								},
+								{
+									filename: '2.jpg',
+									data: toBase64(data2),
+								},
+								{
+									filename: '3.jpg',
+									data: toBase64(data3),
+								},
+								{
+									filename: '4.jpg',
+									data: toBase64(data4),
+								},
+								{
+									filename: '5.jpg',
+									data: toBase64(data5),
+								},
+								{
+									filename: '6.jpg',
+									data: toBase64(data6)
+								}
+							]);
 							res.write(body);
 							res.end();
 						});

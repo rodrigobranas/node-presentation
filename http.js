@@ -5,9 +5,15 @@ var server = http.createServer((req, res) => {
 		'Content-Type': 'application/json',
 		'Access-Control-Allow-Origin': '*'
 	});
-	var body = JSON.stringify({
-		photos: ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg']
-	});
+	var photos = [
+		{filename: '1.jpg'},
+		{filename: '2.jpg'},
+		{filename: '3.jpg'},
+		{filename: '4.jpg'},
+		{filename: '5.jpg'},
+		{filename: '6.jpg'}
+	];
+	var body = JSON.stringify(photos);
 	res.write(body);
 	res.end();
 });

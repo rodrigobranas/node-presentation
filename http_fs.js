@@ -6,11 +6,11 @@ var server = http.createServer((req, res) => {
 		'Content-Type': 'application/json',
 		'Access-Control-Allow-Origin': '*'
 	});
-	fs.readFile('photos/1.jpg', function (err, data) {
-		var photo = data.toString('base64');
-		var body = JSON.stringify({
-			data: 'data:image/jpg;base64,' + photo
+	fs.readdir('photos/', function (err, data) {
+		var photos = data.map(function (photo) {
+			return {filename: photo};
 		});
+		var body = JSON.stringify(photos);
 		res.write(body);
 		res.end();
 	});

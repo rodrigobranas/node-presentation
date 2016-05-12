@@ -1,0 +1,34 @@
+<html ng-app="palestras">
+<head>
+	<title></title>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		angular.module('palestras', []);
+		angular.module('palestras').controller('palestrasCtrl', function ($scope, $http) {
+			$scope.appName = 'Palestras';
+			$http.get('palestras').then(function (response) {
+				$scope.palestras = response.data;
+			});
+
+			$scope.abrirPalestra = function (palestra) {
+				$http.get('palestras/' + palestra.id).then(function (response) {
+					palestra.detalhes = response.data;
+				});
+			}
+		});
+	</script>
+</head>
+<body ng-controller="palestrasCtrl">
+	{{appName}}
+	<ul>
+		<li ng-repeat="palestra in palestras">
+			<span ng-click="abrirPalestra(palestra)">{{palestra.titulo}}</span>
+			<div ng-show="palestra.detalhes">
+				<img src="{{palestra.detalhes.palestrante.foto}}" width="200px"/>
+				<h5>{{palestra.detalhes.palestrante.nome}}</h5>
+				<p>{{palestra.detalhes.descricao}}</p>
+			</div>
+		</li>
+	</ul>
+</body>
+</html>

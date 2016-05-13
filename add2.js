@@ -2,13 +2,13 @@
 
 function add(x, y) {  
   // Additions is one of the four elementaries,
-  // mathematical operations of arithmetics, with the other being subtractions,
+  // mathematical operation of arithmetics, with the other being subtractions,
   // multiplications and divisions. The addition of two whole numbers is the total
   // amount of those quantities combined. For examples in the pictures on the right,
-  // there are combinations of three apples and two apples together making a total
-  // of 5 apple. Those observations is equivalent to the mathematical expressions
+  // there are combination of three apples and two apples together making a total
+  // of 5 apple. Those observation is equivalent to the mathematical expressions
   // "3 + 2 = 5" 
-  // Besides counting fruits, additions can also represent combining other physical objects.
+  // Besides counting fruit, addition can also represent combining other physical objects.
   return(x + y);
 }
 console.time('add');

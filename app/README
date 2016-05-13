@@ -1,17 +1,36 @@
 Node.js Hands-On
 
-1 - Criar uma pasta principal.
+1 - Criar uma pasta para o projeto e inicializar um repositório no github.
+
 mkdir app (OK)
+git init (OK)
+
 2 - Utilizar o NPM para instalar os pacotes express, dando origem ao package.json 
-npm init e npm install express --save (OK)
-3 - Mapear os recursos estáticos com o Express 
+
+npm init (OK)
+npm install express --save (OK)
+
+3 - Mapear os recursos estáticos com o Express e abrir a aplicação a partir de http://localhost:3000
+
 app.use('/', express.static('/client'));
-4 - Criar uma pasta client.
+
+4 - Criar uma pasta client para o projeto de front-end.
+
 mkdir client (OK)
+
+5 - Utilizar o bower para instalar o angular e o bootstrap.
+
+bower init (OK)
+bower install angular bootstrap --save (OK)
+
 5 - Criar uma aplicação com AngularJS que renderize uma lista de palestrantes exibindo apenas o nome e consumindo a rota /palestrantes
+
 ...
-6 - Criar a rota /palestrantes retornando um JSON com o array de palestrantes
-app.get('/palestrantes', ...);
-7 - Ao clicar no palestrantes, exibir a foto e o título com a descrição da palestra
-app.get('/palestrantes/:id');
-8 - Utilizar o módulo zlib para compactar o retorno.
+
+6 - Criar a rota /palestras retornando um JSON com o array de palestras a partir do módulo data
+
+app.get('/palestras', ...);
+
+7 - Criar a rota /palestras/:id para que ao clicar na palestra, exibir a descrição da palestra juntamente com a foto e o nome do palestrante.
+
+app.get('/palestras/:id');

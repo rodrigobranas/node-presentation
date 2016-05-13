@@ -1,0 +1,36 @@
+<html ng-app="tdc">
+<head>
+	<title>Palestras da trilha de JavaScript</title>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		angular.module('tdc', []);
+		angular.module('tdc').controller('tdcCtrl', function ($scope, $http) {
+			$scope.app = 'TDC';
+			$http.get('palestras').then(function (response) {
+				$scope.palestras = response.data;
+			});
+			$scope.carregarPalestra = function (palestra) {
+				$http.get('palestras/' + palestra.id).then(function (response) {
+					palestra.detalhes = response.data;
+				});
+			};
+		});
+	</script>
+</head>
+<body ng-controller="tdcCtrl">
+	{{app}}
+	<ul>
+		<li ng-repeat="palestra in palestras">
+			<b><span ng-click="carregarPalestra(palestra)">{{palestra.titulo}}</span></b>
+			<div>
+				<img src="{{palestra.detalhes.foto}}" width="100"/>
+				<span>{{palestra.detalhes.palestrante.nome}}</span><br/>
+				<p>{{palestra.detalhes.descricao}}</p>
+			</div>
+		</li>
+	</ul>
+</body>
+</html>
+
+
+
